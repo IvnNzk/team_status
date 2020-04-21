@@ -1,2 +1,2 @@
 # team_status
-team member status tracker
+lets team be seen
