@@ -20,7 +20,7 @@ services:
             - POSTGRES_USER=root
             - POSTGRES_PASSWORD=supAS1r0nK
         volumes:
-            - ./docker-entrypoint/initdb.d/:/docker-entrypoint/initdb.d/
+            - ./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
     nginx:
         container_name: team_status_nginx
         image: localhost:5000/team_status_nginx
