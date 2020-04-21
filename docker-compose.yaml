@@ -1,0 +1,32 @@
+version: "3.5"
+services:
+    web_app:
+        image: localhost:5000/team_status_web_app
+        container_name: team_status_web_app
+        restart: always
+        build:
+            context: app/
+            dockerfile: Dockerfile
+        volumes:
+            - ./app/:/opt/
+        depends_on:
+            - nginx
+            - postgres
+    postgres:
+        container_name: team_status_postgres
+        image: postgres
+        restart: always
+        environment:
+            - POSTGRES_USER=root
+            - POSTGRES_PASSWORD=supAS1r0nK
+        volumes:
+            - ./docker-entrypoint/initdb.d/:/docker-entrypoint/initdb.d/
+    nginx:
+        container_name: team_status_nginx
+        image: localhost:5000/team_status_nginx
+        build:
+            context: nginx/
+            dockerfile: Dockerfile
+        restart: always
+        ports:
+            - 80:80
